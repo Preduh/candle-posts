@@ -15,7 +15,10 @@ const PostCard = ({ title, category, emoji, content, date }: PostCardProps) => {
   const [showFullTile, setShowFullTitle] = useState(false);
 
   return (
-    <div className="bg-secondary shadow-md rounded-xl relative cursor-default flex flex-col justify-between">
+    <a
+      href="#"
+      className="bg-secondary shadow-md rounded-xl relative cursor-default flex flex-col justify-between"
+    >
       <div className="h-full p-4">
         <div className="flex justify-between">
           <p className="text-3xl">{emoji}</p>
@@ -54,7 +57,7 @@ const PostCard = ({ title, category, emoji, content, date }: PostCardProps) => {
       <p className="text-light-gray mt-4 text-right h-min bg-dark-gray rounded-b-xl px-4 py-2">
         {date}
       </p>
-    </div>
+    </a>
   );
 };
 
