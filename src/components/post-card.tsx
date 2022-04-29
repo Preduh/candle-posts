@@ -40,7 +40,7 @@ const PostCard = ({ title, category, emoji, content, date }: PostCardProps) => {
               <p className="text-white text-sm font-normal whitespace-nowrap">
                 {title}
               </p>
-              <div className="border-dark-gray absolute w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-8 -right-2 top-1/2 -translate-y-1/2"></div>
+              <div className="border-dark-gray absolute w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-8 -right-2 top-1/2 -translate-y-1/2" />
             </div>
           ) : (
             ""
