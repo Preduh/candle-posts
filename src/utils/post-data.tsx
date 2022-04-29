@@ -7,6 +7,7 @@ const postData = [
     se perder no caminho para o sucesso!`,
     category: "learning",
     emoji: "📖",
+    likes: 3874,
     created_at: "26/04/2022",
   },
   {
@@ -17,6 +18,7 @@ const postData = [
     de coral.`,
     category: "travel",
     emoji: "🧳",
+    likes: 3544,
     created_at: "26/04/2022",
   },
   {
@@ -27,6 +29,7 @@ const postData = [
     industrializada.`,
     category: "health",
     emoji: "🍒",
+    likes: 324,
     created_at: "26/04/2022",
   },
   {
@@ -39,6 +42,7 @@ const postData = [
     camada interna que envolve o nervo do dente, fica exposta.`,
     category: "curiosities",
     emoji: "🔎",
+    likes: 890,
     created_at: "26/04/2022",
   },
 ];

@@ -1,25 +1,38 @@
 import React, { useState } from "react";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 type PostCardProps = {
+  id: number;
   title: string;
   category: string;
   emoji: string;
   content: string;
+  likes: number;
   date: string;
 };
 
 const MAX_CONTENT_CHARACTERS = 180;
 const MAX_TITLE_CHARACTERS = 38;
 
-const PostCard = ({ title, category, emoji, content, date }: PostCardProps) => {
+const PostCard = ({
+  id,
+  title,
+  category,
+  emoji,
+  content,
+  likes,
+  date,
+}: PostCardProps) => {
   const [showFullTile, setShowFullTitle] = useState(false);
+  const [liked, setLiked] = useState(false);
+
+  const handleLike = () => {
+    setLiked(!liked);
+  };
 
   return (
-    <a
-      href="#"
-      className="bg-secondary shadow-md rounded-xl relative cursor-default flex flex-col justify-between"
-    >
-      <div className="h-full p-4">
+    <div className="bg-secondary shadow-md rounded-xl relative cursor-default flex flex-col justify-between">
+      <a href={`/${id}`} className="h-full p-4">
         <div className="flex justify-between">
           <p className="text-3xl">{emoji}</p>
           <p className="text-sm text-light-gray">{category.toUpperCase()}</p>
@@ -47,17 +60,31 @@ const PostCard = ({ title, category, emoji, content, date }: PostCardProps) => {
           )}
         </h2>
 
-        <p className="text-light-gray text-md">
+        <p className="text-light-gray text-md pb-4">
           &ensp;
           {content.length > MAX_CONTENT_CHARACTERS
             ? content.substring(0, MAX_CONTENT_CHARACTERS) + "..."
             : content}
         </p>
+      </a>
+      <div className="h-min bg-dark-gray rounded-b-xl px-4 py-2 flex justify-between items-center">
+        <div className="flex items-center">
+          {liked ? (
+            <AiFillHeart
+              className="text-white cursor-pointer"
+              onClick={handleLike}
+            />
+          ) : (
+            <AiOutlineHeart
+              className="text-white cursor-pointer"
+              onClick={handleLike}
+            />
+          )}
+          <p className="text-white text-sm ml-1">{likes}</p>
+        </div>
+        <p className="text-light-gray text-sm">{date}</p>
       </div>
-      <p className="text-light-gray mt-4 text-right h-min bg-dark-gray rounded-b-xl px-4 py-2">
-        {date}
-      </p>
-    </a>
+    </div>
   );
 };
 
