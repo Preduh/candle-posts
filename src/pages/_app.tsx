@@ -1,17 +1,16 @@
-import { ThemeProvider } from "@emotion/react";
-import type { AppProps } from "next/app";
-import "../../styles/globals.css";
-import { AuthProvider } from "../context/auth";
-import ThemeContext from "../context/theme";
+import { ThemeProvider } from "next-themes"
+import type { AppProps } from "next/app"
+import "../../styles/globals.css"
+import { AuthProvider } from "../context/auth"
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={ThemeContext}>
+    <ThemeProvider attribute="class">
       <AuthProvider>
         <Component {...pageProps} />
       </AuthProvider>
     </ThemeProvider>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp

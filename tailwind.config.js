@@ -1,6 +1,7 @@
 module.exports = {
   mode: "jit",
   content: ["./src/components/**/*.tsx", "./src/pages/**/*.tsx"],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -8,12 +9,14 @@ module.exports = {
         secondary: "#171717",
         "dark-gray": "#272727",
         "light-gray": "#B6B6B6",
-        "primary-orange": "#f3aa41",
-        "dark-orange": "#C76D00",
+        "light-orange": "#f3aa41",
+        "primary-orange": "#ff8800",
+        "dark-orange": "#F77C00",
       },
       fontFamily: {
         hammersmith: ["Hammersmith One", "sans-serif"],
         poppins: ["Poppins", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
       },
     },
   },

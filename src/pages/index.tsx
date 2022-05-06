@@ -1,37 +1,39 @@
-import { CircularProgress } from "@mui/material";
-import { NextPage } from "next";
-import Head from "next/head";
-import { FormEvent, useContext, useState } from "react";
-import { AiFillGithub, AiFillLock, AiOutlineUser } from "react-icons/ai";
-import { FcGoogle } from "react-icons/fc";
-import { MdErrorOutline } from "react-icons/md";
-import AuthContext from "../context/auth";
+import { CircularProgress } from "@mui/material"
+import { NextPage } from "next"
+import Head from "next/head"
+import { FormEvent, useContext, useState } from "react"
+import { AiFillGithub, AiFillLock, AiOutlineUser } from "react-icons/ai"
+import { FcGoogle } from "react-icons/fc"
+import { MdErrorOutline } from "react-icons/md"
+import { ToggleThemeBtn } from "../components/toggle-theme-btn"
+import AuthContext from "../context/auth"
 
 const Login: NextPage = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
 
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("")
 
-  const { signIn, loading } = useContext(AuthContext);
+  const { signIn, loading } = useContext(AuthContext)
 
   const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    const signInResult = await signIn({ username, password });
+    const signInResult = await signIn({ username, password })
 
-    if (typeof signInResult === "object") setErrorMessage(signInResult.error);
-  };
+    if (typeof signInResult === "object") setErrorMessage(signInResult.error)
+  }
 
   return (
-    <div className="bg-primary min-h-screen">
+    <div className="bg-gray-100 dark:bg-primary min-h-screen">
       <Head>
         <title>Login</title>
       </Head>
-      <div className=" h-screen w-full flex items-center justify-center flex-col p-12">
+      <ToggleThemeBtn />
+      <div className="h-screen w-full flex items-center justify-center flex-col p-12">
         <div className="flex flex-col items-center">
           <img src="/candle.svg" alt="Candle Hero" className="w-24" />
-          <h1 className="text-primary-orange font-hammersmith font-bold text-3xl whitespace-nowrap">
+          <h1 className="text-primary dark:text-white font-roboto font-black text-3xl whitespace-nowrap">
             Light your Candle
           </h1>
         </div>
@@ -49,7 +51,7 @@ const Login: NextPage = () => {
           <div className="relative">
             <label
               htmlFor="username"
-              className="text-white font-medium text-lg flex items-center"
+              className="text-primary dark:text-white font-medium text-lg flex items-center"
             >
               <AiOutlineUser className="mr-2" />
               Username
@@ -57,17 +59,17 @@ const Login: NextPage = () => {
             <input
               name="username"
               type="text"
-              className="text-white w-full h-10 rounded-md border-none bg-secondary transition-all ease-linear duration-75 focus:outline-none focus:ring-primary-orange placeholder:text-light-gray placeholder:text-sm"
+              className="text-primary dark:text-white w-full h-10 rounded-md border-none bg-white shadow-md dark:shadow-none dark:bg-secondary transition-all ease-linear duration-75 focus:outline-none focus:ring-primary-orange focus:scale-105 placeholder:text-light-gray placeholder:text-sm"
               placeholder="John..."
               autoComplete="off"
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={e => setUsername(e.target.value)}
               required
             />
           </div>
           <div className="relative mt-4">
             <label
               htmlFor="password"
-              className="text-white font-medium text-lg flex items-center"
+              className="text-primary dark:text-white font-medium text-lg flex items-center"
             >
               <AiFillLock className="mr-2" />
               Password
@@ -75,43 +77,45 @@ const Login: NextPage = () => {
             <input
               name="password"
               type="password"
-              className="text-white w-full h-10 rounded-md border-none bg-secondary transition-all ease-linear duration-75 focus:outline-none focus:ring-primary-orange placeholder:text-light-gray placeholder:text-sm"
+              className="text-primary dark:text-white w-full h-10 rounded-md border-none dark:bg-secondary bg-white shadow-md dark:shadow-none transition-all ease-linear duration-75 focus:outline-none focus:ring-primary-orange focus:scale-105 placeholder:text-light-gray placeholder:text-sm"
               placeholder="Must have at least 6 characters..."
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={e => setPassword(e.target.value)}
               required
             />
           </div>
           <button
             type="submit"
-            className="text-primary bg-primary-orange w-full h-10 border-none focus:outline-none active:scale-95 rounded-md font-bold mt-8"
+            className="shadow-md dark:shadow-none shadow-light-gray text-white bg-primary dark:bg-primary-orange hover:bg-black dark:hover:bg-dark-orange w-full h-10 border-none focus:outline-none active:scale-95 rounded-md font-bold mt-8 flex items-center justify-center"
           >
             {loading ? <CircularProgress size={32} /> : "Sign In"}
           </button>
         </form>
 
         <div className="flex items-center w-full my-2">
-          <hr className="w-full border-white" />
-          <p className="whitespace-nowrap text-white mx-2">Or sign in with</p>
-          <hr className="w-full border-white" />
+          <hr className="w-full border-primary dark:border-white" />
+          <p className="whitespace-nowrap text-primary dark:text-white mx-2">
+            Or sign in with
+          </p>
+          <hr className="w-full border-primary dark:border-white" />
         </div>
 
         <div className="flex justify-center w-full p-4">
           <button
             type="button"
-            className="flex items-center justify-center text-4xl bg-white border-0 w-12 h-12 p-2 mx-4 rounded-full"
+            className="flex items-center justify-center text-4xl border-0 w-12 h-12 p-2 mx-4 rounded-full text-white bg-primary dark:bg-white dark:text-primary shadow-md shadow-black dark:shadow-lg"
           >
             <AiFillGithub />
           </button>
           <button
             type="button"
-            className="flex items-center justify-center text-4xl bg-white border-0 w-12 h-12 p-2 mx-4 rounded-full"
+            className="flex items-center justify-center text-4xl bg-white border-0 w-12 h-12 p-2 mx-4 rounded-full shadow-md shadow-gray-400 dark:shadow-lg dark:shadow-black"
           >
             <FcGoogle />
           </button>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
