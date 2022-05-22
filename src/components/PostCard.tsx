@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import React, { useState } from "react"
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai"
 
 type PostCardProps = {
-  id: number;
-  title: string;
-  category: string;
-  emoji: string;
-  content: string;
-  likes: number;
-  date: string;
-};
+  id: number
+  title: string
+  category: string
+  emoji: string
+  content: string
+  likes: number
+  date: string
+}
 
-const MAX_CONTENT_CHARACTERS = 180;
-const MAX_TITLE_CHARACTERS = 38;
+const MAX_CONTENT_CHARACTERS = 180
+const MAX_TITLE_CHARACTERS = 38
 
 const PostCard = ({
   id,
@@ -23,24 +23,26 @@ const PostCard = ({
   likes,
   date,
 }: PostCardProps) => {
-  const [showFullTile, setShowFullTitle] = useState(false);
-  const [liked, setLiked] = useState(false);
+  const [showFullTile, setShowFullTitle] = useState(false)
+  const [liked, setLiked] = useState(false)
 
   const handleLike = () => {
-    setLiked(!liked);
-  };
+    setLiked(!liked)
+  }
 
   return (
-    <div className="bg-secondary shadow-md rounded-xl relative cursor-default flex flex-col justify-between">
+    <div className="bg-white dark:bg-secondary shadow-md shadow-light-gray dark:shadow-none rounded-xl relative cursor-default flex flex-col justify-between">
       <a href={`/${id}`} className="h-full p-4">
         <div className="flex justify-between">
           <p className="text-3xl">{emoji}</p>
-          <p className="text-sm text-light-gray">{category.toUpperCase()}</p>
+          <p className="text-sm text-primary dark:text-light-gray">
+            {category.toUpperCase()}
+          </p>
         </div>
         <h2
-          className="font-bold text-lg text-white my-2 h-16 flex items-center relative"
+          className="font-bold text-lg text-primary dark:text-white my-2 h-16 flex items-center relative"
           onMouseOver={() => {
-            if (title.length > MAX_TITLE_CHARACTERS) setShowFullTitle(true);
+            if (title.length > MAX_TITLE_CHARACTERS) setShowFullTitle(true)
           }}
           onMouseOut={() => setShowFullTitle(false)}
         >
@@ -60,32 +62,32 @@ const PostCard = ({
           )}
         </h2>
 
-        <p className="text-light-gray text-md pb-4">
+        <p className="text-slate-700 dark:text-light-gray text-md pb-4">
           &ensp;
           {content.length > MAX_CONTENT_CHARACTERS
             ? content.substring(0, MAX_CONTENT_CHARACTERS) + "..."
             : content}
         </p>
       </a>
-      <div className="h-min bg-dark-gray rounded-b-xl px-4 py-2 flex justify-between items-center">
+      <div className="h-min bg-gray-200 dark:bg-dark-gray rounded-b-xl px-4 py-2 flex justify-between items-center">
         <div className="flex items-center">
           {liked ? (
             <AiFillHeart
-              className="text-white cursor-pointer"
+              className="dark:text-white text-primary cursor-pointer"
               onClick={handleLike}
             />
           ) : (
             <AiOutlineHeart
-              className="text-white cursor-pointer"
+              className="dark:text-white text-primary cursor-pointer"
               onClick={handleLike}
             />
           )}
-          <p className="text-white text-sm ml-1">{likes}</p>
+          <p className="dark:text-white text-primary text-sm ml-1">{likes}</p>
         </div>
-        <p className="text-light-gray text-sm">{date}</p>
+        <p className="dark:text-light-gray text-primary text-sm">{date}</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PostCard;
+export default PostCard

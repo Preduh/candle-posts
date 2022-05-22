@@ -21,13 +21,13 @@ function ToggleThemeBtn() {
   }
 
   return (
-    <div className="flex justify-end items-center absolute right-12 top-4">
+    <div className="flex justify-end items-center">
       <Switch
         checked={enabled}
         onChange={handleChange}
         className={`${
           enabled ? "bg-primary-orange" : "bg-primary"
-        } relative inline-flex h-6 w-11 items-center rounded-full`}
+        } relative inline-flex h-6 w-11 items-center rounded-full outline-none`}
       >
         <span className="sr-only">Change theme</span>
         <div

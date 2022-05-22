@@ -30,8 +30,10 @@ const Login: NextPage = () => {
       <Head>
         <title>Login</title>
       </Head>
-      <ToggleThemeBtn />
       <div className="h-screen w-full flex items-center justify-center flex-col p-12">
+        <div className="flex flex-col items-end w-full">
+          <ToggleThemeBtn />
+        </div>
         <div className="flex flex-col items-center">
           <img src="/candle.svg" alt="Candle Hero" className="w-24" />
           <h1 className="text-primary dark:text-white font-roboto font-black text-3xl whitespace-nowrap">
