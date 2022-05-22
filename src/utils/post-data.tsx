@@ -45,6 +45,6 @@ const postData = [
     likes: 890,
     created_at: "26/04/2022",
   },
-];
+]
 
-export default postData;
+export default postData

@@ -1,12 +1,11 @@
-import { NextComponentType } from "next";
-import router from "next/router";
-import React from "react";
-import { GiCandlebright } from "react-icons/gi";
+import { NextComponentType } from "next"
+import router from "next/router"
+import React, { useContext } from "react"
+import { GiCandlebright } from "react-icons/gi"
+import AuthContext from "../context/auth"
 
 const Navbar: NextComponentType = () => {
-  const handleLogout = () => {
-    router.push("/");
-  };
+  const { logout } = useContext(AuthContext)
 
   return (
     <div className="bg-secondary h-16 w-full p-4 absolute top-0 flex justify-between">
@@ -16,11 +15,11 @@ const Navbar: NextComponentType = () => {
           Candle Posts
         </h1>
       </div>
-      <button type="button" onClick={handleLogout} className="text-white">
+      <button type="button" onClick={logout} className="text-white">
         Logout
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

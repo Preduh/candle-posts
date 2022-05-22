@@ -1,8 +1,10 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import Navbar from "../components/navbar";
-import PostCard from "../components/post-card";
-import postData from "../utils/post-data";
+import type { GetServerSideProps, NextPage } from "next"
+import Head from "next/head"
+import route from "next/router"
+import { parseCookies } from "nookies"
+import Navbar from "../components/Navbar"
+import PostCard from "../components/PostCard"
+import postData from "../utils/post-data"
 
 const Home: NextPage = () => {
   return (
@@ -30,11 +32,27 @@ const Home: NextPage = () => {
               likes={likes}
               date={created_at}
             />
-          )
+          ),
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
+
+export const getServerSideProps: GetServerSideProps = async context => {
+  const { "candle.token": token } = parseCookies(context)
+
+  if (!token)
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    }
+
+  return {
+    props: {},
+  }
+}

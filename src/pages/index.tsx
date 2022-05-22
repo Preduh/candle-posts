@@ -1,11 +1,12 @@
 import { CircularProgress } from "@mui/material"
-import { NextPage } from "next"
+import { GetServerSideProps, NextPage } from "next"
 import Head from "next/head"
+import { parseCookies } from "nookies"
 import { FormEvent, useContext, useState } from "react"
 import { AiFillGithub, AiFillLock, AiOutlineUser } from "react-icons/ai"
 import { FcGoogle } from "react-icons/fc"
 import { MdErrorOutline } from "react-icons/md"
-import { ToggleThemeBtn } from "../components/toggle-theme-btn"
+import { ToggleThemeBtn } from "../components/ToggleThemeButton"
 import AuthContext from "../context/auth"
 
 const Login: NextPage = () => {
@@ -39,8 +40,8 @@ const Login: NextPage = () => {
         </div>
 
         {errorMessage ? (
-          <div className="mt-4 text-white p-2 rounded-md flex items-center justify-between border-2 border-white w-full">
-            <MdErrorOutline className="text-4xl" />
+          <div className="mt-4 text-white p-2 rounded-md flex items-center justify-center border-2 border-white w-full">
+            <MdErrorOutline className="text-4xl mr-4" />
             <p className="text-center">{errorMessage}</p>
           </div>
         ) : (
@@ -59,7 +60,7 @@ const Login: NextPage = () => {
             <input
               name="username"
               type="text"
-              className="text-primary dark:text-white w-full h-10 rounded-md border-none bg-white shadow-md dark:shadow-none dark:bg-secondary transition-all ease-linear duration-75 focus:outline-none focus:ring-primary-orange focus:scale-105 placeholder:text-light-gray placeholder:text-sm"
+              className="text-primary dark:text-white w-full h-10 rounded-md border-none bg-white shadow-md dark:shadow-none dark:bg-secondary focus:outline-none focus:ring-primary-orange placeholder:text-light-gray placeholder:text-sm"
               placeholder="John..."
               autoComplete="off"
               onChange={e => setUsername(e.target.value)}
@@ -77,7 +78,7 @@ const Login: NextPage = () => {
             <input
               name="password"
               type="password"
-              className="text-primary dark:text-white w-full h-10 rounded-md border-none dark:bg-secondary bg-white shadow-md dark:shadow-none transition-all ease-linear duration-75 focus:outline-none focus:ring-primary-orange focus:scale-105 placeholder:text-light-gray placeholder:text-sm"
+              className="text-primary dark:text-white w-full h-10 rounded-md border-none dark:bg-secondary bg-white shadow-md dark:shadow-none focus:outline-none focus:ring-primary-orange placeholder:text-light-gray placeholder:text-sm"
               placeholder="Must have at least 6 characters..."
               onChange={e => setPassword(e.target.value)}
               required
@@ -91,7 +92,7 @@ const Login: NextPage = () => {
           </button>
         </form>
 
-        <div className="flex items-center w-full my-2">
+        <div className="flex items-center w-full my-2 mt-8">
           <hr className="w-full border-primary dark:border-white" />
           <p className="whitespace-nowrap text-primary dark:text-white mx-2">
             Or sign in with
@@ -113,6 +114,16 @@ const Login: NextPage = () => {
             <FcGoogle />
           </button>
         </div>
+
+        <p className="mt-4">
+          Don&apos;t have an account?{" "}
+          <a
+            href="/register"
+            className="text-primary-orange text-lg font-bold cursor-pointer hover:text-dark-orange"
+          >
+            Sign up
+          </a>
+        </p>
       </div>
     </div>
   )
